@@ -1,31 +1,42 @@
 import React, { Component } from "react";
 import { Table, Tag } from "antd";
-// import { transactionList } from "@/api/remoteSearch";
+import { getArticleList } from "@/api/article";
 
 const columns = [
   {
-    title: "Order_No",
-    dataIndex: "order_no",
-    key: "order_no",
+    title: "标题",
+    dataIndex: "title",
+    key: "title",
     width: 200,
   },
   {
-    title: "Price",
-    dataIndex: "price",
-    key: "price",
+    title: "类别",
+    dataIndex: "typeName",
+    key: "typeName",
     width: 195,
-    render: text => (`$${text}`),
+    render: text => (`${text}`),
   },
   {
-    title: "Status",
-    key: "tag",
-    dataIndex: "tag",
+    title: "发布时间",
+    key: "addTime",
+    dataIndex: "addTime",
     width: 100,
-    render: (tag) => (
-      <Tag color={tag === "pending" ? "magenta" : "green"} key={tag}>
-        {tag}
-      </Tag>
-    ),
+    // render: (tag) => (
+    //   <Tag color={tag === "pending" ? "magenta" : "green"} key={tag}>
+    //     {tag}
+    //   </Tag>
+    // ),
+  },
+  {
+    title: "浏览量",
+    key: "view_count",
+    dataIndex: "view_count",
+    width: 100,
+    // render: (tag) => (
+    //   <Tag color={tag === "pending" ? "magenta" : "green"} key={tag}>
+    //     {tag}
+    //   </Tag>
+    // ),
   },
 ];
 
@@ -35,12 +46,13 @@ class TransactionTable extends Component {
     list: [],
   };
   fetchData = () => {
-    // transactionList().then((response) => {
-    //   const list = response.data.data.items.slice(0, 13);
-    //   if (this._isMounted) { 
-    //     this.setState({ list });
-    //   }
-    // });
+    getArticleList().then(res => {
+      const list = res.data.list
+      console.log(res.data.list)
+      if (this._isMounted) {
+        this.setState({ list });
+      }
+    });
   };
   componentDidMount() {
     this._isMounted = true;
@@ -55,6 +67,7 @@ class TransactionTable extends Component {
         columns={columns}
         dataSource={this.state.list}
         pagination={false}
+        rowKey={record=>record.id}
       />
     );
   }

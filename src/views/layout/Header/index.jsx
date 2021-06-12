@@ -49,10 +49,10 @@ const LayoutHeader = (props) => {
       <Menu.Item key="project">
         <a
           target="_blank"
-          href="https://www.baidu.com"
+          href="http://www.aqingi.cn"
           rel="noopener noreferrer"
         >
-          项目地址
+          博客地址
         </a>
       </Menu.Item>
       <Menu.Divider />

@@ -1,7 +1,7 @@
 /*
  * @Author: 吴晓晴
  * @Date: 2021-06-10 21:50:21
- * @LastEditTime: 2021-06-10 22:51:39
+ * @LastEditTime: 2021-06-11 21:27:50
  * @FilePath: \webDevelopment\blogDev\jspang-blog\react-blog\my-admin\config-overrides.js
  */
 const {
@@ -17,8 +17,6 @@ function resolve(dir) {
   return path.join(__dirname, dir);
 }
 process.env.CI = "false";
-// 关掉 sourceMap
-process.env.GENERATE_SOURCEMAP = process.env.NODE_ENV === 'development' ? 'true' : 'false';
 const addCustomize = () => (config) => {
   if (config.output.publicPath) {
     config.output.publicPath =
@@ -39,7 +37,7 @@ const devServerConfig = () => config => {
     ...config,
       proxy: {
         '/api': {
-          target: 'http://127.0.0.1:7002',
+          target: 'http://127.0.0.1:7001',
           changeOrigin: true,
           pathRewrite: {
             '^/api': ''

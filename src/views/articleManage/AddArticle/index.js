@@ -1,15 +1,16 @@
 /*
  * @Author: 吴晓晴
  * @Date: 2021-05-26 20:20:07
- * @LastEditTime: 2021-06-11 00:16:45
+ * @LastEditTime: 2021-06-12 21:59:44
  * @FilePath: \webDevelopment\blogDev\jspang-blog\react-blog\my-admin\src\views\articleManage\AddArticle\index.js
  */
 import React, { useState, useEffect } from 'react'
+// import Markdown from "@/components/Markdown";
 import marked from 'marked'
 import './style.less'
 import { Row, Col, Input, Select, Button, DatePicker, message } from 'antd'
 import moment from 'moment';
-import { getTypeInfo,addArticle ,updateArticle,getArticleById } from "@/api/article";
+import { getTypeInfo, addArticle, updateArticle, getArticleById } from "@/api/article";
 const { Option } = Select
 const { TextArea } = Input
 
@@ -158,7 +159,7 @@ const AddArticle = (props) => {
             addArticle(dataProps).then(res => {
                 console.log(res)
                 setArticleId(res.data.insertId)
-                if (res.isSuccess) {
+                if (res.data.isSuccess) {
                     message.success('文章添加成功')
                 } else {
                     message.success('文章添加失败')
@@ -182,7 +183,7 @@ const AddArticle = (props) => {
 
 
     return (
-        <div>
+        <div style={{ padding: '20px' }}>
             <Row gutter={5}>
                 <Col span={18}>
                     <Row gutter={10}>
@@ -212,6 +213,8 @@ const AddArticle = (props) => {
                                 value={articleContent}
                                 onChange={changeContent}
                             />
+
+                            {/* <Markdown className="markdown-content" rows={35} /> */}
                         </Col>
                         <Col span={12}>
                             <div className="show-html" dangerouslySetInnerHTML={{ __html: markdownContent }}>

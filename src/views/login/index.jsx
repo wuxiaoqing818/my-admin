@@ -22,8 +22,9 @@ const Login = (props) => {
    
       })
       .catch((error) => {
+        console.log(error)
         setLoading(false);
-        message.error(error);
+        message.error('登录失败');
       });
   };
 
@@ -72,7 +73,7 @@ const Login = (props) => {
                     message: "请输入用户名",
                   },
                 ],
-                initialValue: "admin", // 初始值
+                initialValue: "", // 初始值
               })(
                 <Input
                   prefix={
@@ -91,7 +92,7 @@ const Login = (props) => {
                     message: "请输入密码",
                   },
                 ],
-                initialValue: "123456", // 初始值
+                initialValue: "", // 初始值
               })(
                 <Input
                   prefix={
