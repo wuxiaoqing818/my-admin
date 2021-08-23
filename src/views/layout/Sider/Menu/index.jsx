@@ -27,6 +27,8 @@ class Meun extends Component {
   filterMenuItem = (item) => {
     const { roles } = item;
     const { role } = this.props;
+    // console.log(role)
+    console.log(this.props)
     if (role === "admin" || !roles || roles.includes(role)) {
       return true;
     } else if (item.children) {

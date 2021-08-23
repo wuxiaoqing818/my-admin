@@ -24,10 +24,8 @@ const AddArticle = (props) => {
     const [introducemd, setIntroducemd] = useState()            //简介的markdown内容
     const [introducehtml, setIntroducehtml] = useState('等待编辑') //简介的html内容
     const [showDate, setShowDate] = useState()   //发布日期
-    const [updateDate, setUpdateDate] = useState() //修改日志的日期
     const [typeInfo, setTypeInfo] = useState([]) // 文章类别信息
     const [selectedType, setSelectType] = useState(1) //选择的文章类别
-    // const [defaultTime,setDefaultTime] = useState(moment(new Date(), 'YYYY-MM-DD'))
 
 
     marked.setOptions({
@@ -42,19 +40,18 @@ const AddArticle = (props) => {
     });
 
     useEffect(() => {
-        // console.log(moment().format('YYYY-MM-DD'))
-        // setShowDate(moment().format('YYYY-MM-DD'))
-        //时间回显处理
-        // if(showDate===undefined){
-
-        // }
-
         getTypeData()
-        let tmpId = props.match.params.id
-        console.log(props)
-        if (tmpId) {
-            setArticleId(tmpId)
-            getArticleData(tmpId)
+        const { location } = props;
+        let detailedParams;
+        if ( location.state?.detailedParams) {//判断当前有参数
+            detailedParams = location.state.detailedParams;
+            sessionStorage.setItem('detailedParams', JSON.stringify(detailedParams));// 存入到sessionStorage中
+        } else {
+            detailedParams = JSON.parse(sessionStorage.getItem('detailedParams'));// 当state没有参数时，取sessionStorage中的参数
+        }
+        if (detailedParams.id) {
+            setArticleId(detailedParams.id)
+            getArticleData(detailedParams.id)
         }
 
     }, [])

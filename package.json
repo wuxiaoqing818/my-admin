@@ -25,6 +25,7 @@
     "marked": "^2.0.7",
     "moment": "^2.29.1",
     "nprogress": "^0.2.0",
+    "particles-bg": "^2.5.5",
     "prop-types": "^15.7.2",
     "react": "^16.13.1",
     "react-beautiful-dnd": "^13.0.0",

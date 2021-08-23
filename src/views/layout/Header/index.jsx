@@ -20,7 +20,11 @@ const LayoutHeader = (props) => {
     showSettings,
     fixedHeader,
   } = props;
-  token && getUserInfo('admin');
+  token && getUserInfo({
+    wuxiaoqing: 'admin',
+    lishanghua: 'editor',
+    guest: 'guest'
+  }[JSON.parse(sessionStorage.getItem('username'))]);
   const handleLogout = (token) => {
     Modal.confirm({
       title: "注销",

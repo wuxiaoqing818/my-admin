@@ -26,7 +26,11 @@ class Router extends React.Component {
                 if (role) {
                   return <Layout />;
                 } else {
-                  getUserInfo('admin').then(() => <Layout />);
+                  getUserInfo({
+                    wuxiaoqing: 'admin',
+                    lishanghua: 'editor',
+                    guest: 'guest'
+                  }[JSON.parse(sessionStorage.getItem('username'))]).then(() => <Layout />);
                 }
               }
             }}

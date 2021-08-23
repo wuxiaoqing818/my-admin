@@ -5,6 +5,7 @@ import { connect } from "react-redux";
 import DocumentTitle from "react-document-title";
 import "./index.less";
 import { login, getUserInfo } from "@/store/actions";
+import ParticlePage from '@components/Particle'
 
 const Login = (props) => {
   const { form, token, login, getUserInfo } = props;
@@ -18,8 +19,9 @@ const Login = (props) => {
     login(username, password)
       .then((data) => {
         message.success("登录成功");
-        handleUserInfo('admin')
-   
+        handleUserInfo(username)
+        sessionStorage.setItem('username',JSON.stringify(username))
+
       })
       .catch((error) => {
         console.log(error)
@@ -29,9 +31,16 @@ const Login = (props) => {
   };
 
   // 获取用户信息
-  const handleUserInfo = (token) => {
-    getUserInfo(token)
-      .then((data) => {})
+  const handleUserInfo = (username) => {
+    console.log(username)
+    const role = {
+      wuxiaoqing: 'admin',
+      lishanghua: 'editor',
+      guest: 'guest'
+    }[username]
+    getUserInfo(role)
+      .then((data) => {
+       })
       .catch((error) => {
         message.error(error);
       });
@@ -59,6 +68,11 @@ const Login = (props) => {
   return (
     <DocumentTitle title={"用户登录"}>
       <div className="login-container">
+        <ParticlePage />
+        {/* 使用video制作背景图 */}
+        {/* <video muted autoplay="autoplay" loop="loop" className="video-bg">
+          <source src=""></source>
+        </video> */}
         <Form onSubmit={handleSubmit} className="content">
           <div className="title">
             <h2>用户登录</h2>

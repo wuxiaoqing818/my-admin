@@ -1,13 +1,22 @@
 import React from "react";
 import logo from "@/assets/images/wechat.jpg";
 import "./index.less";
-const Logo = () => {
+import { connect } from "react-redux";
+const Logo = (props) => {
+  const {avatar} = props
   return (
     <div className="sidebar-logo-container">
-      <img src={logo} className="sidebar-logo" alt="logo" />
+      <img src={avatar} className="sidebar-logo" alt="logo" />
       <h1 className="sidebar-title">阿晴</h1>
     </div>
   );
 };
 
-export default Logo;
+const mapStateToProps = (state) => {
+  return {
+    ...state.app,
+    ...state.user,
+    ...state.settings,
+  };
+};
+export default connect(mapStateToProps)(Logo);

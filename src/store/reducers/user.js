@@ -14,6 +14,7 @@ export default function user(state = initUserInfo, action) {
         token: action.token
       };
     case types.USER_SET_USER_INFO:
+      console.log(action)
       return {
         ...state,
         name: action.name,

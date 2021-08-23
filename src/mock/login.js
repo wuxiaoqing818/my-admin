@@ -12,7 +12,7 @@ const users = {
   "editor": {
     id: "editor",
     role: "editor",
-    name: "编辑员",
+    name: "编辑者",
     avatar: otherAvatar,
     description: "可以看到除户管理页面之外的所有页面",
   },
@@ -21,7 +21,7 @@ const users = {
     role: "guest",
     name: "游客",
     avatar: otherAvatar,
-    description: "仅能看到Dashboard、开发文档、权限测试和关于作者四个页面",
+    description: "没有操作权限",
   },
 };
 
@@ -29,6 +29,7 @@ export default {
   userInfo: (config) => {
     const token = config.body;
     const userInfo = users[token];
+    console.log(config)
     if (!userInfo) {
       return {
         status: 1,
@@ -38,12 +39,6 @@ export default {
     return {
       status: 0,
       userInfo,
-    };
-  },
-  getUsers: () => {
-    return {
-      status: 0,
-      users: Object.values(users),
     };
   },
   logout: (_) => {

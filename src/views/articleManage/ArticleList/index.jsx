@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { List, Row, Col, Modal, Message, Button, message, Table } from 'antd'
+import { useHistory, Link } from 'react-router-dom';
 import { getArticleList, deleteArticle } from "@/api/article";
 import './style.less'
 const { confirm } = Modal
@@ -8,6 +9,7 @@ const { confirm } = Modal
 
 
 const ArticleList = (props) => {
+    let history = useHistory();
     const columns = [
         {
             title: "标题",
@@ -106,7 +108,13 @@ const ArticleList = (props) => {
 
     //修改文章
     const updateArticle = id => {
-        props.history.push('/articleManage/addArticle/' + id)
+        // props.history.push('/articleManage/addArticle/' + id)
+        history.push({
+            pathname: '/articleManage/addArticle',
+            search: `?id=${id}`,
+            hash: '',
+            state: { detailedParams: { id: id } }
+        })
     }
 
     //分页
