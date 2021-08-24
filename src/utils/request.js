@@ -22,7 +22,7 @@ service.interceptors.request.use(
     // Do something before request is sent
     if (store.getState().user.token) {
       // 让每个请求携带token-- ['Authorization']为自定义key 请根据实际情况自行修改
-      config.headers.Authorization =`Bearer ${getToken()}`
+      config.headers.Authorization = `Bearer ${getToken()}`
     }
     return config;
   },

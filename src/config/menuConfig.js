@@ -24,6 +24,11 @@ const menuList = [
         path: "/articleManage/articleList",
         roles: ["admin","editor"]
       },
+      {
+        title: "文章大盘",
+        path: "/articleManage/articleMarket",
+        roles: ["admin","editor","guest"]
+      },
     
     ],
   },
@@ -41,33 +46,33 @@ const menuList = [
     icon: "key",
     roles: ["admin", "editor","guest"]
   },
-  // {
-  //   title: "权限测试",
-  //   path: "/permission",
-  //   icon: "lock",
-  //   children: [
-  //     {
-  //       title: "权限说明",
-  //       path: "/permission/explanation",
-  //       roles: ["admin"]
-  //     },
-  //     {
-  //       title: "admin页面",
-  //       path: "/permission/adminPage",
-  //       roles: ["admin"]
-  //     },
-  //     {
-  //       title: "guest页面",
-  //       path: "/permission/guestPage",
-  //       roles: ["guest"]
-  //     },
-  //     {
-  //       title: "editor页面",
-  //       path: "/permission/editorPage",
-  //       roles: ["editor"]
-  //     },
-  //   ],
-  // },
+  {
+    title: "权限说明",
+    path: "/permission",
+    icon: "lock",
+    children: [
+      {
+        title: "权限说明",
+        path: "/permission/explanation",
+        roles: ["admin"]
+      },
+      {
+        title: "admin页面",
+        path: "/permission/adminPage",
+        roles: ["admin"]
+      },
+      {
+        title: "guest页面",
+        path: "/permission/guestPage",
+        roles: ["guest"]
+      },
+      {
+        title: "editor页面",
+        path: "/permission/editorPage",
+        roles: ["editor"]
+      },
+    ],
+  },
   {
     title: "关于作者",
     path: "/about",

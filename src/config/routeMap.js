@@ -9,6 +9,7 @@ import Loading from '@/components/Loading'
 const Dashboard = Loadable({loader: () => import(/*webpackChunkName:'Dashboard'*/'@/views/dashboard'),loading: Loading});
 const addArticle = Loadable({loader: () => import(/*webpackChunkName:'addArticle'*/'@/views/articleManage/AddArticle'),loading: Loading});
 const articleList = Loadable({loader: () => import(/*webpackChunkName:'articleList'*/'@/views/articleManage/ArticleList'),loading: Loading});
+const articleMarket = Loadable({loader: () => import(/*webpackChunkName:'articleMarket'*/'@/views/articleManage/ArticleMarket'),loading: Loading});
 const Doc = Loadable({loader: () => import(/*webpackChunkName:'Doc'*/'@/views/doc'),loading: Loading});
 const Guide = Loadable({loader: () => import(/*webpackChunkName:'Guide'*/'@/views/guide'),loading: Loading});
 const Explanation = Loadable({loader: () => import(/*webpackChunkName:'Explanation'*/'@/views/permission'),loading: Loading});
@@ -22,6 +23,7 @@ export default [
   { path: "/dashboard", component: Dashboard, roles: ["admin","editor","guest"] },
   { path: "/articleManage/addArticle", component: addArticle, roles: ["admin"] },
   { path: "/articleManage/articleList", component: articleList, roles: ["admin"] },
+  { path: "/articleManage/articleMarket", component: articleMarket, roles: ["admin","editor","guest"] },
   { path: "/doc", component: Doc, roles: ["admin","editor","guest"] },
   { path: "/guide", component: Guide, roles: ["admin","editor"] },
   { path: "/permission/explanation", component: Explanation, roles: ["admin"] },

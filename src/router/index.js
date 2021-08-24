@@ -10,6 +10,8 @@ import { connect } from "react-redux";
 import { getUserInfo } from "@/store/actions";
 import Layout from "@/views/layout";
 import Login from "@/views/login";
+import Cookies from 'js-cookie'
+import {base64decode} from '../utils/base64Code'
 class Router extends React.Component {
   render() {
     const { token, role, getUserInfo } = this.props;
@@ -30,7 +32,7 @@ class Router extends React.Component {
                     wuxiaoqing: 'admin',
                     lishanghua: 'editor',
                     guest: 'guest'
-                  }[JSON.parse(sessionStorage.getItem('username'))]).then(() => <Layout />);
+                  }[base64decode(Cookies.get('Role')||'')]).then(() => <Layout />);
                 }
               }
             }}

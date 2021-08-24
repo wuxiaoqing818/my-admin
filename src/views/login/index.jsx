@@ -6,6 +6,8 @@ import DocumentTitle from "react-document-title";
 import "./index.less";
 import { login, getUserInfo } from "@/store/actions";
 import ParticlePage from '@components/Particle'
+import Cookies from 'js-cookie'
+import {base64decode} from '../../utils/base64Code'
 
 const Login = (props) => {
   const { form, token, login, getUserInfo } = props;
@@ -19,9 +21,7 @@ const Login = (props) => {
     login(username, password)
       .then((data) => {
         message.success("登录成功");
-        handleUserInfo(username)
-        sessionStorage.setItem('username',JSON.stringify(username))
-
+        handleUserInfo()
       })
       .catch((error) => {
         console.log(error)
@@ -31,13 +31,9 @@ const Login = (props) => {
   };
 
   // 获取用户信息
-  const handleUserInfo = (username) => {
-    console.log(username)
-    const role = {
-      wuxiaoqing: 'admin',
-      lishanghua: 'editor',
-      guest: 'guest'
-    }[username]
+  const handleUserInfo = () => {
+    // console.log(username)
+    const role = base64decode(Cookies.get('Role'))
     getUserInfo(role)
       .then((data) => {
        })

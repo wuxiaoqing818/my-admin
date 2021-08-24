@@ -8,7 +8,9 @@ import Settings from "@/components/Settings";
 import Hamburger from "@/components/Hamburger";
 import BreadCrumb from "@/components/BreadCrumb";
 import "./index.less";
+import Cookies  from "js-cookie";
 const { Header } = Layout;
+
 
 const LayoutHeader = (props) => {
   const {
@@ -20,11 +22,7 @@ const LayoutHeader = (props) => {
     showSettings,
     fixedHeader,
   } = props;
-  token && getUserInfo({
-    wuxiaoqing: 'admin',
-    lishanghua: 'editor',
-    guest: 'guest'
-  }[JSON.parse(sessionStorage.getItem('username'))]);
+  token && getUserInfo(Cookies.get('Role'));
   const handleLogout = (token) => {
     Modal.confirm({
       title: "注销",
