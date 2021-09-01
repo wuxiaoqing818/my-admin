@@ -21,8 +21,8 @@ const About = Loadable({loader: () => import(/*webpackChunkName:'About'*/'@/view
 
 export default [
   { path: "/dashboard", component: Dashboard, roles: ["admin","editor","guest"] },
-  { path: "/articleManage/addArticle", component: addArticle, roles: ["admin"] },
-  { path: "/articleManage/articleList", component: articleList, roles: ["admin"] },
+  { path: "/articleManage/addArticle", component: addArticle, roles: ["admin","editor"] },
+  { path: "/articleManage/articleList", component: articleList, roles: ["admin","editor"] },
   { path: "/articleManage/articleMarket", component: articleMarket, roles: ["admin","editor","guest"] },
   { path: "/doc", component: Doc, roles: ["admin","editor","guest"] },
   { path: "/guide", component: Guide, roles: ["admin","editor"] },

@@ -42,16 +42,10 @@ const AddArticle = (props) => {
     useEffect(() => {
         getTypeData()
         const { location } = props;
-        let detailedParams;
-        if ( location.state?.detailedParams) {//判断当前有参数
-            detailedParams = location.state.detailedParams;
-            sessionStorage.setItem('detailedParams', JSON.stringify(detailedParams));// 存入到sessionStorage中
-        } else {
-            detailedParams = JSON.parse(sessionStorage.getItem('detailedParams'));// 当state没有参数时，取sessionStorage中的参数
-        }
-        if (detailedParams.id) {
-            setArticleId(detailedParams.id)
-            getArticleData(detailedParams.id)
+      
+        if (location.query?.id) {
+            setArticleId(location.query.id)
+            getArticleData(location.query.id)
         }
 
     }, [])

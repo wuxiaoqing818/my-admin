@@ -29,8 +29,8 @@ class Router extends React.Component {
                   return <Layout />;
                 } else {
                   getUserInfo({
-                    wuxiaoqing: 'admin',
-                    lishanghua: 'editor',
+                    admin: 'admin',
+                    editor: 'editor',
                     guest: 'guest'
                   }[base64decode(Cookies.get('Role')||'')]).then(() => <Layout />);
                 }

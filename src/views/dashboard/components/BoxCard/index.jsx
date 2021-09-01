@@ -16,6 +16,7 @@ class BoxCard extends Component {
   componentDidMount() {
     this.getTypeData()
     this.fetchArticleList()
+    // console.log(this.props)
   }
   getTypeData = () => {
     getTypeInfo().then(res => {
@@ -77,7 +78,7 @@ class BoxCard extends Component {
           <div style={{ position: 'relative' }}>
             {/* 动画组件 */}
             <PanThumb image={avatar} className="panThumb" />
-            <Mallki className="mallki-text" text="阿晴" />
+            <Mallki className="mallki-text" text={this.props.name} />
 
             {
               this.state.percentageList.map((item, index) => {

@@ -109,11 +109,10 @@ const ArticleList = (props) => {
     //修改文章
     const updateArticle = id => {
         // props.history.push('/articleManage/addArticle/' + id)
-        history.push({
+        
+        props.history.push({
             pathname: '/articleManage/addArticle',
-            search: `?id=${id}`,
-            hash: '',
-            state: { detailedParams: { id: id } }
+            query: {id:id},
         })
     }
 

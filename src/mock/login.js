@@ -12,7 +12,7 @@ const users = {
   "editor": {
     id: "editor",
     role: "editor",
-    name: "编辑者",
+    name: "管理员",
     avatar: otherAvatar,
     description: "可以看到除户管理页面之外的所有页面",
   },
