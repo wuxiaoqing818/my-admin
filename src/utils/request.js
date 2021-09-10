@@ -10,10 +10,23 @@ import { Modal } from "antd";
 import { getToken } from "@/utils/auth";
 import { logout } from "@/store/actions";
 
+const CancelToken = axios.CancelToken;
+const pending = [];
+
+
+
+
+
 //创建一个axios示例
 const service = axios.create({
   baseURL: process.env.REACT_APP_BASE_API, // api 的 base_url
   timeout: 5000, // request timeout
+});
+
+
+service.cancelToken = new CancelToken(function executor(c) {
+  // An executor function receives a cancel function as a parameter
+  pending.push(c);
 });
 
 // 请求拦截器
@@ -35,7 +48,11 @@ service.interceptors.request.use(
 
 // 响应拦截器
 service.interceptors.response.use(
-  (response) => response,
+  (response) => {
+    console.log(pending)
+    return response
+  },
+
   /**
    * 下面的注释为通过在response里，自定义code来标示请求状态
    * 当code返回如下情况则说明权限有问题，登出并返回到登录页
@@ -73,6 +90,11 @@ service.interceptors.response.use(
     console.log("err" + error); // for debug
     const { status } = error.response;
     if (status === 401) {
+      console.log(pending)
+
+      while (pending.length > 0) {
+        pending.pop()('请求中断');
+      }
       Modal.confirm({
         title: "确定登出?",
         content:

@@ -1,0 +1,31 @@
+.article-market {
+    padding: 20px;
+    .weichat {
+        color: red;
+    }
+    
+    .weichat {
+        position: relative;
+    }
+    
+    .weichat:after {
+        position: absolute;
+        content: 'NV1874424779';
+        width: 200px;
+        height: 60px;
+        line-height: 2;
+        background: pink;
+        font-size: 12px;
+        left: 0px;
+        top: 30px;
+        transform-origin: top left;
+        transform: scale(0);
+        opacity: 0;
+        transition: all 1s;
+        z-index: 99;
+    }
+    .weichat:hover:after {
+        transform: scale(1);
+        opacity: 1;
+    }
+}

@@ -2,6 +2,7 @@ import React from "react";
 import TypingCard from "@/components/TypingCard";
 import wechat from "@/assets/images/wechat.jpg";
 import reward from "@/assets/images/reward.jpg";
+import './style.less'
 const About = () => {
   const cardContent = `
     <p>大家好，我是阿晴。</p>
@@ -12,7 +13,7 @@ const About = () => {
   `;
   return (
     <div className="app-container">
-      <TypingCard title="关于作者" source={cardContent} />
+      <TypingCard title="关于作者" source={cardContent}/>
     </div>
   );
 };

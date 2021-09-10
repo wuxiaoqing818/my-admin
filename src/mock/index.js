@@ -6,10 +6,12 @@
  */
 import Mock from "mockjs";
 import loginAPI from "./login";
+import adminApi from './admin'
 
 // 登录与用户相关
 Mock.mock(/\/logout/, "post", loginAPI.logout);
 Mock.mock(/\/userInfo/, "post", loginAPI.userInfo);
+Mock.mock(/\/adminList/, "post", adminApi.adminList);
 
 
 export default Mock;
