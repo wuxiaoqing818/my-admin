@@ -16,6 +16,7 @@ const Explanation = Loadable({loader: () => import(/*webpackChunkName:'Explanati
 const AdminPage = Loadable({loader: () => import(/*webpackChunkName:'AdminPage'*/'@/views/permission/adminPage'),loading: Loading});
 const GuestPage = Loadable({loader: () => import(/*webpackChunkName:'GuestPage'*/'@/views/permission/guestPage'),loading: Loading});
 const EditorPage = Loadable({loader: () => import(/*webpackChunkName:'EditorPage'*/'@/views/permission/editorPage'),loading: Loading});
+const ComponentLibrary = Loadable({loader: () => import(/*webpackChunkName:'Form'*/'@/views/componentLibrary'),loading: Loading});
 const Error404 = Loadable({loader: () => import(/*webpackChunkName:'Error404'*/'@/views/error/404'),loading: Loading});
 const About = Loadable({loader: () => import(/*webpackChunkName:'About'*/'@/views/about'),loading: Loading});
 
@@ -30,6 +31,7 @@ export default [
   { path: "/permission/adminPage", component: AdminPage, roles: ["admin"] },
   { path: "/permission/guestPage", component: GuestPage, roles: ["guest"] },
   { path: "/permission/editorPage", component: EditorPage, roles: ["editor"] },
+  { path: "/componentLibrary", component: ComponentLibrary, roles:  ["admin","editor","guest"]},
   { path: "/about", component: About, roles: ["admin", "editor", "guest"] },
   { path: "/error/404", component: Error404 },
 ];

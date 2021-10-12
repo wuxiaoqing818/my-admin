@@ -74,6 +74,12 @@ const menuList = [
     ],
   },
   {
+    title: "组件库",
+    path: "/componentLibrary",
+    icon: "lock",
+    roles: ["admin", "editor", "guest"]
+  },
+  {
     title: "关于作者",
     path: "/about",
     icon: "user",
