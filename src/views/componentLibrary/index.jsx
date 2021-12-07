@@ -1,7 +1,9 @@
 import React, { useState, useEffect, useCallback } from "react";
 import { Card } from 'antd'
-import PopoverCheckbox from "./PopoverCheckbox";
+import PopoverCheckbox from "./PopoverCheckbox";  //多选
+import UploadComponent from './Upload'  //上传
 import TableComponent from "./Table"
+import FormComponent from './Form'
 import "./index.less"
 
 const ComponentLibrary = () => {
@@ -34,7 +36,7 @@ const ComponentLibrary = () => {
     }, [])
 
 
-    //接受子组件
+    //  多选组件 接受子组件
     const getCheckedList = useCallback((arr) => {
 
         const columns = arr.map(item => {
@@ -58,6 +60,13 @@ const ComponentLibrary = () => {
         setTableList(tableList)
     }, [])
 
+    // 上传组件
+
+
+
+
+   
+
 
 
 
@@ -74,6 +83,16 @@ const ComponentLibrary = () => {
 
                 {/* table组件 */}
                 <TableComponent columns={columns} tableList={tableList} />
+
+                {/* 上传组件 */}
+                <UploadComponent/>
+
+                {/* form组件 */}
+                <FormComponent/>
+
+
+             
+
 
 
 

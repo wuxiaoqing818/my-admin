@@ -2,8 +2,6 @@
   height: 100%;
   overflow: hidden;
   position: relative;
-  // background: #2d3a4b;
-  // background-image: url('~@/assets/images/bg.jpg');
   background-size: 100% 100%;
   .video-bg {
     position: fixed;
@@ -46,6 +44,8 @@
     transform: translate(-50%, -60%);
     box-shadow: 0 0 10px 2px rgba(40, 138, 204, 0.16);
     border-radius: 3px;
+    z-index: 10000;
+    opacity: .8;
 
     .title {
       text-align: center;
@@ -72,4 +72,30 @@
       float: right;
     }
   }
+}
+
+.login-container::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: url(../../assets/images/meinv.jpg) no-repeat;
+  background-size: cover;
+  opacity: .6;
+  animation: anim 25s linear infinite;
+
+}
+
+@keyframes anim {
+  50%{
+    transform: scale(2);
+
+  }
+  100%{
+    transform: scale(1);
+
+  }
+
 }

@@ -29,6 +29,8 @@ const PopoverCheckbox = ({ checkList, popTitle, popBtnTitle, getCheckedList }) =
         setCheckList(defaultCheckedList)
         setIndeterminate(!!defaultCheckedList.length && defaultCheckedList.length < checkOptions.length)
         setCheckAll(defaultCheckedList.length === checkOptions.length)
+         //传递给父组件
+         getCheckedList(defaultCheckedList)
     }, [checkList])
 
 
