@@ -72,66 +72,6 @@
       float: right;
     }
   }
-
-  /* 确定强度条的宽高，用于平均分块 */
-  ::-webkit-meter-bar {
-    width: 120px;
-    height: 12px;
-    border: 0;
-
-      /* 用遮罩添加间隔 */
-    /*-webkit-mask: linear-gradient(to right, red 39px, transparent 0 41px, orange 0 79px, transparent 0 81px, green 0);*/
-  }
-  /* value 处于 [min, low]时 */
-  ::-webkit-meter-even-less-good-value {
-    background: red;
-  }
-  /* value 处于 [low, optimum]时 */
-  ::-webkit-meter-suboptimum-value {
-    /*background: linear-gradient(to right, red 40px, orange 0);*/
-    background: linear-gradient(to right, red 40px, orange 0);
-  }
-  /* value 处于 [optimum, max]时 */
-  ::-webkit-meter-optimum-value {
-    background: linear-gradient(to right, red 40px, orange 0 80px, green 0);
-  }
-
-  /* 用伪元素添加间隔 */
-  meter::before {
-      content: '';
-      display: block;
-      width: 40px;
-      height: 12px;
-      box-sizing: border-box;
-      border-width: 0 2px 0 2px;
-      border-color: #fff;
-      border-style: solid;
-      position: relative;
-      left: 39px;
-      top: 13px;
-      z-index: 2;
-      margin-top: -12px;
-  }
-
-  /* 用伪元素添加文字说明 */
-  meter::after {
-      content: '强 中 弱 aaaaaaaaaaaaaaaaaa';
-      display: inline-block;
-      width: 120px;
-      line-height: 20px;
-      height: 20px;
-      overflow: hidden;
-      text-align: justify;
-      box-sizing: border-box;
-      padding: 0 15px;
-      position: absolute; /* 脱离文本流，不挤占位置 */
-
-      font-weight: bold;
-      -webkit-text-fill-color: transparent;
-      background: linear-gradient(to right, red 40px, orange 0 80px, green 0);
-      -webkit-background-clip: text;
-  }
-
 }
 
 .login-container::after {
