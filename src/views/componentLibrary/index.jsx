@@ -65,7 +65,7 @@ const ComponentLibrary = () => {
 
 
 
-   
+
 
 
 
@@ -85,13 +85,18 @@ const ComponentLibrary = () => {
                 <TableComponent columns={columns} tableList={tableList} />
 
                 {/* 上传组件 */}
-                <UploadComponent/>
+                <UploadComponent />
 
                 {/* form组件 */}
-                <FormComponent/>
+                <FormComponent />
 
 
-             
+                {/* <div onClick={()=>console.log('haha')}>
+                    <input type="text" style={{ width: '300px' }} />
+                </div> */}
+
+
+
 
 
 
