@@ -7,13 +7,37 @@ import "./index.less";
 import { login, getUserInfo } from "@/store/actions";
 import ParticlePage from '@components/Particle'
 import Cookies from 'js-cookie'
-import {base64decode} from '../../utils/base64Code'
+import { base64decode } from '../../utils/base64Code'
+
 
 const Login = (props) => {
   const { form, token, login, getUserInfo } = props;
   const { getFieldDecorator } = form;
 
   const [loading, setLoading] = useState(false);
+
+  // const copyMethods = ()=>{
+  //   var text = '被复制的内容，啦啦啦~';
+  //   if (navigator.clipboard) {
+  //       // clipboard api 复制
+  //       navigator.clipboard.writeText(text);
+  //   } else {
+  //       var textarea = document.createElement('textarea');
+  //       document.body.appendChild(textarea);
+  //       // 隐藏此输入框
+  //       textarea.style.position = 'fixed';
+  //       textarea.style.clip = 'rect(0 0 0 0)';
+  //       textarea.style.top = '10px';
+  //       // 赋值
+  //       textarea.value = text;
+  //       // 选中
+  //       textarea.select();
+  //       // 复制
+  //       document.execCommand('copy', true);
+  //       // 移除输入框
+  //       document.body.removeChild(textarea);
+  //   }
+  // }
 
   const handleLogin = (username, password) => {
     // 登录完成后 发送请求 调用接口获取用户信息
@@ -36,7 +60,7 @@ const Login = (props) => {
     const role = base64decode(Cookies.get('Role'))
     getUserInfo(role)
       .then((data) => {
-       })
+      })
       .catch((error) => {
         message.error(error);
       });
@@ -54,9 +78,17 @@ const Login = (props) => {
         handleLogin(username, password);
       } else {
         console.log("检验失败!");
+        // copyMethods()
+
       }
     });
   };
+
+  const zxcvbnPassword = (e) => {
+    const intension = document.querySelector('meter');
+    intension.value = window.zxcvbn(e.target.value).guesses_log10;
+
+  }
 
   if (token) {
     return <Redirect to="/dashboard" />;
@@ -110,10 +142,14 @@ const Login = (props) => {
                   }
                   type="password"
                   placeholder="密码"
+                  onChange={(e) => zxcvbnPassword(e)}
                 />
               )}
+              <meter min="0" max="12" low="4" high="8" optimum="10" />
             </Form.Item>
+
             <Form.Item>
+
               <Button
                 type="primary"
                 htmlType="submit"
