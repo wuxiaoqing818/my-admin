@@ -1,9 +1,10 @@
 import React, { useState, useEffect, useCallback } from "react";
-import { Card } from 'antd'
+import { Card, Button } from 'antd'
 import PopoverCheckbox from "./PopoverCheckbox";  //多选
 import UploadComponent from './Upload'  //上传
 import TableComponent from "./Table"
 import FormComponent from './Form'
+import LunXun from '../../components/lunxun'
 import "./index.less"
 
 const ComponentLibrary = () => {
@@ -96,7 +97,7 @@ const ComponentLibrary = () => {
                 </div> */}
 
 
-
+                <LunXun />
 
 
 
